@@ -23,8 +23,8 @@ router.get("/comics", async (req, res) => {
 });
 router.get("/characters", async (req, res) => {
   try {
-    const name = req.query.name || "";
-
+    let { name, page } = req.query;
+    if (!page) page = 0;
     const response = await axios.get(
       `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${
         process.env.API_KEY
