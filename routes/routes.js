@@ -9,7 +9,7 @@ router.get("/comics", async (req, res) => {
     const response = await axios.get(
       `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${
         process.env.API_KEY
-      }&title=${title}&limit=100&skip=${Number(page) * 100}`
+      }&title=${title}&limit=100&skip=${Number(page) * limit}`
     );
 
     res.json(response.data);
@@ -58,7 +58,7 @@ router.get("/comics/:characterId", async (req, res) => {
   }
 });
 
-router.get(" /comic/:comicId", async (req, res) => {
+router.get("/comic/:comicId", async (req, res) => {
   try {
     const comicId = req.params.comicId;
     const response = await axios.get(
